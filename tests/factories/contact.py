@@ -2,6 +2,7 @@ import multiprocessing
 from django import db
 from tests.models import Contact
 from faker import Faker
+import factory
 import gc
 
 fake = Faker()
@@ -23,6 +24,11 @@ def worker(args):
             ))
     Contact.objects.bulk_create(contacts)
     gc.collect()
+
+
+# class ContactFactory(factory.Factory):
+#     class Meta:
+#         model = Contact
 
 
 class ContactFactory(object):

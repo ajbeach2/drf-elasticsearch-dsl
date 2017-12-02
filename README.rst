@@ -31,7 +31,7 @@ Add it to your `INSTALLED_APPS`:
 
     INSTALLED_APPS = (
         ...
-        'drf_elasticsearch_dsl.apps.DjPackageConfig',
+        'drf_elasticsearch_dsl.apps.DrfElasticsearchDsl',
         ...
     )
 

@@ -5,11 +5,12 @@ from elasticsearch_dsl.connections import connections
 from django.core.exceptions import ImproperlyConfigured
 
 
-class DjPackageConfig(AppConfig):
+class DrfElasticsearchDsl(AppConfig):
     name = 'drf_elasticsearch_dsl'
 
     def ready(self):
         from .signals import CelerySignalProcessor
+        from .connection_handler import connection_handler
 
         self.drf_elasticsearch_dsl_settings = getattr(
             settings,
@@ -27,4 +28,5 @@ class DjPackageConfig(AppConfig):
                 'DRF_SERIALIZER_ELASTICSERACH_SETTTINGS is missing elasticsearch_hosts')
 
         connections.create_connection(hosts=self.elasticsearch_hosts)
+        self.connection_handler = connection_handler
         self.signal_processor = CelerySignalProcessor()

@@ -71,7 +71,7 @@ extras_require = {
 setup(
     name='drf-elasticsearch-dsl',
     version=version,
-    description="""Your project description goes here""",
+    description="""DRF wrapper around ElasticsearchDSL""",
     long_description=readme + '\n\n' + history,
     author='Alexander Beach',
     author_email='ajbeach2@gmail.com',

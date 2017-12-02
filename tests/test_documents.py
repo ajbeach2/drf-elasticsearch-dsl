@@ -5,7 +5,7 @@
 test_drf-elasticsearch-dsl
 ------------
 
-Tests for `drf-elasticsearch-dsl` models module.
+Tests for `drf-elasticsearch-dsl` documents module.
 """
 
 from django.test import TestCase
