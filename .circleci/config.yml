@@ -23,24 +23,24 @@ jobs:
             sha1sum elasticsearch-5.6.1.deb
             sudo dpkg -i elasticsearch-5.6.1.deb
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "requirements_test.txt" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
+      # # Download and cache dependencies
+      # - restore_cache:
+      #     keys:
+      #     - v1-dependencies-{{ checksum "requirements_test.txt" }}
+      #     # fallback to using the latest cache if no exact match is found
+      #     - v1-dependencies-
 
-      - run:
-          name: install dependencies
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install tox
+      # - run:
+      #     name: install dependencies
+      #     command: |
+      #       python3 -m venv venv
+      #       . venv/bin/activate
+      #       pip install tox
 
-      - save_cache:
-          paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "requirements_test.txt" }}
+      # - save_cache:
+      #     paths:
+      #       - ./venv
+      #     key: v1-dependencies-{{ checksum "requirements_test.txt" }}
         
       # run tests!
       - run:
@@ -49,7 +49,7 @@ jobs:
             . venv/bin/activate
             sudo /etc/init.d/elasticsearch start
             sleep 7
-            tox
+            python setup.py test
 
       # Upload coverage report
       - run:
