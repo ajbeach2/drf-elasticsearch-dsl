@@ -81,8 +81,6 @@ Create a ModelSerializer
 
 Create a ``search_indexes.py``, which should be in the root of the application. Add your ``ModelSerializerDocument`` classes here. The specificed index will have its mapping updated for this document.
 
-Note: Elasticsearch has removed support for mapping types.
-
 
 .. code-block:: python
 
