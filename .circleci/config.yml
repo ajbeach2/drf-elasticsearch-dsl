@@ -33,7 +33,7 @@ jobs:
           command: |
             sleep 5
             . venv/bin/activate
-            tox
+            coverage run --source drf_elasticsearch_dsl runtests.py tests
 
       - store_artifacts:
           path: .coverage
