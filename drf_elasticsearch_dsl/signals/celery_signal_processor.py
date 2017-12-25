@@ -1,4 +1,4 @@
-from .tasks import searchIndexUpdateTask, searchIndexDeleteTask
+from drf_elasticsearch_dsl.tasks import searchIndexUpdateTask, searchIndexDeleteTask
 from drf_elasticsearch_dsl.connection_handler import connection_handler
 from django.db.models.signals import post_delete, post_save
 
