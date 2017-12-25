@@ -2,7 +2,6 @@ from django.core.exceptions import ObjectDoesNotExist
 import gc
 
 
-
 def chunk_queryset_iterator(queryset, chunk_size=1000):
     """
     Iterate over a Django Queryset ordered by the primary key

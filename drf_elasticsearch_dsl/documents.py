@@ -1,5 +1,4 @@
-from datetime import datetime
-from elasticsearch_dsl import Search, Mapping, Field, Text, Index
+from elasticsearch_dsl import Search, Mapping, Field, Index
 from elasticsearch_dsl.connections import connections
 from elasticsearch.helpers import bulk
 from .helpers import chunk_queryset_iterator
