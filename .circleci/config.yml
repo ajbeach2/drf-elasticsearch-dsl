@@ -33,7 +33,7 @@ jobs:
           command: |
             sleep 5
             . venv/bin/activate
-            python runtests.py
+            tox
 
       - store_artifacts:
           path: .coverage
