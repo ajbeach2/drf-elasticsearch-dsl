@@ -25,11 +25,20 @@ INSTALLED_APPS = [
     "django.contrib.sites",
     "drf_elasticsearch_dsl",
 
-    "tests"
+
+    "tests",
+    "django_celery_results",
 ]
 
+CELERY_BROKER_URL = 'memory://'
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
 DRF_SERIALIZER_ELASTICSERACH_SETTTINGS = {
-    'elasticsearch_hosts': ['localhost']
+    'elasticsearch_hosts': ['localhost'],
+    'signal_processor_class': 'drf_elasticsearch_dsl.signals.CelerySignalProcessor',
 }
 
 SITE_ID = 1

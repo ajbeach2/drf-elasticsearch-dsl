@@ -1,5 +1,10 @@
-# Your app requirements.
--r ../requirements_test.txt
-
-# Your app in editable mode.
+Django==2.0
+djangorestframework==3.7.7
+elasticsearch==5.5.1
+elasticsearch-dsl==5.4.0
+Faker==0.8.8
+python-dateutil==2.6.1
+pytz==2017.3
+six==1.11.0
+urllib3==1.21.1
 -e ../

@@ -7,15 +7,13 @@ logger = get_task_logger(__name__)
 
 
 @shared_task(bind=True)
-def searchIndexUpdateTask(self, app_label, model_name, pk, using):
+def searchIndexUpdateTask(self, label, pk):
     try:
-        model_class = apps.get_model(app_label, model_name)
+        model_class = apps.get_model(label)
         instance = model_class.objects.get(pk=pk)
-        indexer = connection_handler.get_index(model_class)
-        serializer_class = indexer["serializer"]
-        index_class = indexer["index"]
-        data = serializer_class(instance)
-        doc = index_class(data)
+
+        doc_class = connection_handler.get_index(label)
+        doc = doc_class(instance)
         doc.save()
 
     except Exception as exc:
@@ -24,13 +22,14 @@ def searchIndexUpdateTask(self, app_label, model_name, pk, using):
 
 
 @shared_task(bind=True)
-def searchIndexDeleteTask(self, app_label, model_name, pk, using):
+def searchIndexDeleteTask(self, label, pk):
     try:
-        model_class = apps.get_model(app_label, model_name)
-        indexer = connection_handler.get_index(model_class)
-        index_class = indexer["index"]
-        indexer = index_class({id: pk})
-        indexer.delete()
+        model_class = apps.get_model(label)
+        instance = model_class.objects.get(pk=pk)
+
+        doc_class = connection_handler.get_index(label)
+        doc = doc_class(instance)
+        doc.delete()
 
     except Exception as exc:
         logger.exception(exc)

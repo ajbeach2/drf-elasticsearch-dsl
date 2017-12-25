@@ -5,12 +5,12 @@
 test_drf-elasticsearch-dsl
 ------------
 
-Tests for `drf-elasticsearch-dsl` models module.
+Tests for `drf-elasticsearch-dsl` connection_handler module.
 """
 
 from django.test import TestCase
 from drf_elasticsearch_dsl.connection_handler import connection_handler
-from .search_indexes import *
+from .search_indexes import ContactSerializerDocument
 
 
 class TestConnectionHandler(TestCase):

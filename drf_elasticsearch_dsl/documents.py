@@ -1,5 +1,4 @@
-from datetime import datetime
-from elasticsearch_dsl import Search, Mapping, Field, Text
+from elasticsearch_dsl import Search, Mapping, Field, Index
 from elasticsearch_dsl.connections import connections
 from elasticsearch.helpers import bulk
 from .helpers import chunk_queryset_iterator
@@ -139,15 +138,6 @@ class ModelSerializerDocument(object, metaclass=DocMeta):
 
     @classmethod
     def get(cls, id, using=None, index=None, **kwargs):
-        """
-        Retrieve a single document from elasticsearch using it's ``id``.
-        :arg id: ``id`` of the document to be retireved
-        :arg index: elasticsearch index to use, if the ``DocType`` is
-            associated with an index this can be omitted.
-        :arg using: connection alias to use, defaults to ``'default'``
-        Any additional keyword arguments will be passed to
-        ``Elasticsearch.get`` unchanged.
-        """
         es = connections.get_connection(using or cls._doc_type.using)
         doc = es.get(
             index=index or cls._doc_type.index,
@@ -166,6 +156,11 @@ class ModelSerializerDocument(object, metaclass=DocMeta):
             index=index or cls._doc_type.index,
             doc_type=[cls._doc_type.doc_type]
         )
+
+    @classmethod
+    def refresh_index(cls):
+        index = Index(cls._doc_type.index)
+        return index.refresh()
 
     def _get_index(self, index=None):
         if index is None:

@@ -19,5 +19,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', include('drf_elasticsearch_dsl.urls', namespace='drf_elasticsearch_dsl')),
+    url(r'^', include('drf_elasticsearch_dsl.urls')),
 ]

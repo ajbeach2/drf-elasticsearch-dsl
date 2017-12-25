@@ -46,21 +46,18 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 
 install_requires = [
-    'Django>=1.10,<=1.12',
-    'djangorestframework>=3.7.3',
+    'Django',
+    'djangorestframework',
     'elasticsearch-dsl',
-    'elasticsearch-dsl'
 ]
 
 tests_require = [
-    'coverage',
     'mock',
-    'flake8',
-    'tox',
-    'tox-pyenv',
-    'nose',
     'fake',
-    'codecov'
+    'faker',
+    'pytest-django',
+    'celery',
+    'django_celery_results',
 ]
 
 extras_require = {
@@ -71,7 +68,7 @@ extras_require = {
 setup(
     name='drf-elasticsearch-dsl',
     version=version,
-    description="""Your project description goes here""",
+    description="""DRF wrapper around ElasticsearchDSL""",
     long_description=readme + '\n\n' + history,
     author='Alexander Beach',
     author_email='ajbeach2@gmail.com',
@@ -82,6 +79,8 @@ setup(
     include_package_data=True,
     install_requires=install_requires,
     tests_require=tests_require,
+    test_suite='tests',
+    setup_requires=['pytest-runner'],
     extras_require=extras_require,
     license="MIT",
     zip_safe=False,
@@ -89,17 +88,15 @@ setup(
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Framework :: Django',
-        'Framework :: Django :: 1.8',
-        'Framework :: Django :: 1.9',
-        'Framework :: Django :: 1.10',
+        'Framework :: Django :: 2.0',
+        'Environment :: Web Environment',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Natural Language :: English',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
 )

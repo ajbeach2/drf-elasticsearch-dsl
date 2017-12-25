@@ -62,11 +62,10 @@ Ready to contribute? Here's how to set up `drf-elasticsearch-dsl` for local deve
 
     $ git clone git@github.com:your_name_here/drf-elasticsearch-dsl.git
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+3. Install your local copy into a virtualenv::
 
-    $ mkvirtualenv drf-elasticsearch-dsl
-    $ cd drf-elasticsearch-dsl/
-    $ python setup.py develop
+    $ virtualenv env && source env/bin/activate
+    $ pip install -r requirements_dev.txt
 
 4. Create a branch for local development::
 
@@ -78,8 +77,7 @@ Ready to contribute? Here's how to set up `drf-elasticsearch-dsl` for local deve
    tests, including testing other Python versions with tox::
 
         $ flake8 drf_elasticsearch_dsl tests
-        $ python setup.py test
-        $ tox
+        $ make test
 
    To get flake8 and tox, just pip install them into your virtualenv. 
 
