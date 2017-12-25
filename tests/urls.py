@@ -6,5 +6,5 @@ from django.conf.urls import url, include
 from drf_elasticsearch_dsl.urls import urlpatterns as drf_elasticsearch_dsl_urls
 
 urlpatterns = [
-    url(r'^', include(drf_elasticsearch_dsl_urls, namespace='drf_elasticsearch_dsl')),
+    url(r'^', include('drf_elasticsearch_dsl.urls')),
 ]

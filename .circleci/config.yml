@@ -26,7 +26,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "requirements.txt" }}-{{ checksum "requirements_test.txt" }}
+          - v1-dependencies-{{ checksum "requirements_test.txt" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
@@ -35,13 +35,12 @@ jobs:
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install .[celery] --upgrade
-            pip install -r requirements_test.txt
+            pip install tox
 
       - save_cache:
           paths:
             - ./venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}-{{ checksum "requirements_test.txt" }}
+          key: v1-dependencies-{{ checksum "requirements_test.txt" }}
         
       # run tests!
       - run:
@@ -50,7 +49,7 @@ jobs:
             . venv/bin/activate
             sudo /etc/init.d/elasticsearch start
             sleep 7
-            coverage run --source drf_elasticsearch_dsl runtests.py
+            tox
 
       # Upload coverage report
       - run:

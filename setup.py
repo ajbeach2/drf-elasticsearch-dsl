@@ -46,21 +46,18 @@ history = open('HISTORY.rst').read().replace('.. :changelog:', '')
 
 
 install_requires = [
-    'Django>=1.10,<=1.12',
-    'djangorestframework>=3.7.3',
+    'Django',
+    'djangorestframework',
     'elasticsearch-dsl',
-    'elasticsearch-dsl'
 ]
 
 tests_require = [
-    'coverage',
     'mock',
-    'flake8',
-    'tox',
-    'tox-pyenv',
-    'nose',
     'fake',
-    'codecov'
+    'faker',
+    'pytest-django',
+    'celery',
+    'django_celery_results',
 ]
 
 extras_require = {
@@ -82,6 +79,8 @@ setup(
     include_package_data=True,
     install_requires=install_requires,
     tests_require=tests_require,
+    test_suite='tests',
+    setup_requires=['pytest-runner'],
     extras_require=extras_require,
     license="MIT",
     zip_safe=False,
