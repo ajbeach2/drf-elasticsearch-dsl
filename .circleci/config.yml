@@ -2,29 +2,26 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6.1
+     - image: circleci/python:3.6.1
+     - image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+
     working_directory: ~/repo
 
     steps:
       - checkout
 
-      - run: 
-          name: 'install elasticsearch'
-          command: |
-            docker run -d -e 'discovery.type=single-node' -e 'xpack.security.enabled=false' -p 9200:9200 -p 9300:9300 docker.elastic.co/elasticsearch/elasticsearch:6.1.1
-
       - run:
           name: run tests
           command: |
-            python setup.py test
+            sleep 5
+            python runtests.py
 
       # Upload coverage report
-      - run:
-          name: Update coverage
-          command: |
-            codecov
-          when: on_success
+      # - run:
+      #     name: Update coverage
+      #     command: |
+      #       codecov
+      #     when: on_success
 
       - store_artifacts:
           path: .coverage
-
