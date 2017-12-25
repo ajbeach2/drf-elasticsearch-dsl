@@ -12,7 +12,7 @@ DRF Elasticsearch DSL
     :target: https://codecov.io/gh/ajbeach2/drf-elasticsearch-dsl
 
 DRF Elasticsearch DSL is losely based on `django-haystack`_ and provides a ``ModelSerializerDocument``
-which supports all of the field types provided by `elastic-search-dsl persistence`_.. ``ModelSerializerDocument`` is losely based of of the ``DocType`` class provided by ``elasticsearch-dsl.py``
+which supports all of the field types provided by `elastic-search-dsl persistence`_.. ``ModelSerializerDocument`` is losely based on the ``DocType`` class provided by ``elasticsearch-dsl.py``
 
 The purpose of this libraray is to allow definition of elasticsearch documents with DRF's `ModelSerializer`_ class while optionally providing support for async document updates and deletes with `celery`_.
 
