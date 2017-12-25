@@ -32,7 +32,8 @@ jobs:
           name: run tests
           command: |
             sleep 5
-            ./runtests.py
+            pip install -r requirements_test.txt
+            python runtests.py
 
       - store_artifacts:
           path: .coverage
