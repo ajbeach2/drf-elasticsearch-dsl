@@ -34,6 +34,12 @@ jobs:
             sleep 5
             . venv/bin/activate
             coverage run --source drf_elasticsearch_dsl runtests.py tests
+      - run:
+          name: Update coverage
+          command: |
+            . venv/bin/activate
+            codecov
+          when: on_success
 
       - store_artifacts:
           path: .coverage
