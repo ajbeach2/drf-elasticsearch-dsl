@@ -91,7 +91,7 @@ setup(
         'Framework :: Django :: 2.0',
         'Environment :: Web Environment',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',
+        'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
