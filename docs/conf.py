@@ -25,7 +25,7 @@ sys.path.append(parent)
 import drf_elasticsearch_dsl
 import django
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'tests.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'drf_elasticsearch_dsl.tests.settings'
 django.setup()
 
 # -- General configuration -----------------------------------------------------
