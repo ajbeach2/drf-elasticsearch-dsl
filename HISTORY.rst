@@ -7,3 +7,9 @@ History
 ++++++++++++++++++
 
 * First release on PyPI.
+
+
+0.1.1 (2017-11-18)
+++++++++++++++++++
+
+* README and setup.py fixes
