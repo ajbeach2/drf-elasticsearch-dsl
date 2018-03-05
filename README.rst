@@ -115,7 +115,7 @@ Features
 Celery Support
 ^^^^^^^^^^^^^^^
 
-By default, dr-elasticsearch-dsl does not setup signals to sync models on save or delete. To enable celery support, add the following to your settings.py confiration:
+By default, dr-elasticsearch-dsl does not setup signals to sync models on save or delete. To enable celery support, add the following to your settings.py configuration:
 
 .. code-block:: python
 
